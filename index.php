@@ -16,11 +16,16 @@
 
 $password_length = $_GET['password_length'] ?? 0;
 
-$new_password = '';
+$new_password = [];
 
 function generate_password($password_length, &$new_password) {
 
     var_dump($password_length);
+
+    for ($i = 0; $i < $password_length; $i++) {
+        echo $new_password[] = 1;
+
+    }
 }
 
 generate_password($password_length, $new_password);
