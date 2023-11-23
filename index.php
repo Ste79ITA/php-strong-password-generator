@@ -11,12 +11,14 @@
 
 $password_length = $_GET['password_length'] ?? 0;
 
-$new_password = [];
+$new_password = '';
 
 function generate_password($password_length, &$new_password) {
-
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~`! @#$%^&*()_-+={[}]|\:;<>?/';
     for ($i = 0; $i < $password_length; $i++) {
-        $new_password[] = 1;
+        $index = rand(0, strlen($characters) - 1);
+        $new_password .= $characters[$index];
+
 
     }
 }
@@ -25,11 +27,11 @@ generate_password($password_length, $new_password);
 ?>
 
 <form action="" method="GET">
-    <input type="text" name="password_length" placeholder="<?= $password_length?>"> Inserisci il numero di caratteri della password
+    <input type="number" name="password_length" placeholder="<?= $password_length?>"> Inserisci il numero di caratteri della password
     <input type="submit">
     <input type="submit" value="Reset">
 </form>
 
-<h2>La tua password é : <?= implode($new_password)?> </h1>
+<h2>La tua password é : <?= $new_password?> </h1>
 </body>
 </html>
